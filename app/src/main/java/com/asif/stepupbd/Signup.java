@@ -1,5 +1,6 @@
 package com.asif.stepupbd;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -74,17 +75,28 @@ public class Signup extends AppCompatActivity {
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
 
                 byte[] imageBytes = outputStream.toByteArray();
-                String image = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+                String image = Base64.encodeToString(imageBytes, Base64.NO_WRAP);  // FIXED
 
-                String url = "https:// hdoedlikdlja";
+                String url = "⁦http://192.168.120.232/apps/signup.php⁩";
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
+                        new AlertDialog.Builder(Signup.this)
+                                .setTitle("Server Response")
+                                .setMessage(response)
+                                .create().show();
 
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+
+                        new AlertDialog.Builder(Signup.this)
+                                .setTitle("Server Response")
+                                .setMessage(error.getMessage())
+                                .create().show();
+
 
                     }
                 }){
@@ -94,10 +106,10 @@ public class Signup extends AppCompatActivity {
 
                         Map myMap = new HashMap <String,String>();
 
-                        myMap.put("email","");
-                        myMap.put("password","");
-                        myMap.put("name","");
-                        myMap.put("image","");
+                        myMap.put("email", email);
+                        myMap.put("password", password);
+                        myMap.put("name", name);
+                        myMap.put("image", image);
 
                         return myMap;
                     }

@@ -22,7 +22,7 @@
             android:id="@+id/imageProfile"
             android:layout_width="220dp"
             android:layout_height="220dp"
-            android:src="@drawable/nexera"
+            android:src="@drawable/no_image"
             />
 
         <TextView
