@@ -12,29 +12,5 @@
 
 
 
-    <TextView
-        android:id="@+id/map"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello, coming soon"
-        android:textSize="35sp"
-        android:layout_marginTop="80dp"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        android:fontFamily="@font/opensans_semibold"
-
-        />
-
-    <Button
-        android:id="@+id/buttonMap"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
-        android:text="Go to Map"
-        android:textSize="30dp"
-
-        />
-
-
 
 </LinearLayout>

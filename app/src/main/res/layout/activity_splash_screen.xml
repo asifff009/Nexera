@@ -23,11 +23,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="N e x e r a"
+        android:text="Nexera"
         android:gravity="center"
         android:textSize="33sp"
         android:textColor="#FFFFFF"
-        android:fontFamily="@font/courier_bold"
+        android:fontFamily="@font/regular"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
         />

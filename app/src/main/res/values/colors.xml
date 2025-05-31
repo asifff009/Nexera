@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="primaryColor">#4A90E2</color> <!-- blue -->
+    <color name="secondaryColor">#50E3C2</color> <!-- mint green -->
+    <color name="backgroundColor">#F5F7FA</color> <!-- light gray -->
 </resources>
