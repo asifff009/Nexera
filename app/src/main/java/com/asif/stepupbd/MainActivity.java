@@ -2,6 +2,7 @@ package com.asif.stepupbd;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -18,8 +19,7 @@ import java.security.AccessController;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView map;
-    Button buttonMap;
+   SharedPreferences sharedPreferences;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -28,21 +28,15 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        sharedPreferences = getSharedPreferences("myApp",MODE_PRIVATE);
 
+        String email = sharedPreferences.getString("emial", "");
 
-        // google map code --> jei button a dorkar oi button er set on click er moddhe diye dibo
-        // map er dependency holo : implementation("com.google.maps.android:android-maps-utils:3.10.0")
+        if(email.length()<=0){
+            startActivity(new Intent(MainActivity.this, Login.class));
+            finish();
 
-/*
-
-        Uri gmmIntentUri = Uri.parse("geo:0,0?q="+"Pingna High School ");
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        mapIntent.setPackage("com.google.android.apps.maps");
-        map.getContext().startActivity(mapIntent);
-
- */
-
-        //=================================================================
+        }
 
 
 
