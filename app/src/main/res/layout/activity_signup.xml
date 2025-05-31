@@ -19,12 +19,14 @@
         >
 
         <ImageView
+            android:id="@+id/imageProfile"
             android:layout_width="220dp"
             android:layout_height="220dp"
             android:src="@drawable/nexera"
             />
 
         <TextView
+            android:id="@+id/tvChangePhoto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Change Photo"
@@ -48,6 +50,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -62,6 +65,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -75,6 +79,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
@@ -85,6 +90,7 @@
 
 
     <Button
+        android:id="@+id/buttonSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Signup"
@@ -97,6 +103,7 @@
         android:gravity="center"
         />
     <Button
+        android:id="@+id/buttonLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
