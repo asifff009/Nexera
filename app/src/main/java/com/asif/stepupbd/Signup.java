@@ -109,6 +109,7 @@ public class Signup extends AppCompatActivity {
                         myMap.put("email", email);
                         myMap.put("password", password);
                         myMap.put("name", name);
+                        myMap.put("key" , MyMethods.MY_KEY);
                        // myMap.put("image", image);
 
                         return myMap;

@@ -30,6 +30,13 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("myApp",MODE_PRIVATE);
 
+        try {
+            MyMethods.MY_KEY = MyMethods.encryptData("aru112211","aru#123456789123");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
         String email = sharedPreferences.getString("emial", "");
 
         if(email.length()<=0){
