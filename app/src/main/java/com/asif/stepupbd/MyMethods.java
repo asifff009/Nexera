@@ -7,32 +7,23 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class MyMethods {
 
-
     public static String MY_KEY = "";
 
-
-
-    //=======================================================================
-
+    // Encrypt a plaintext string and return AES-ECB encrypted Base64 string
     public static String encryptData(String text, String pass) throws Exception {
-        // Ensure key is 16 bytes (128-bit AES)
+        // Must be 16 characters for AES-128
         byte[] passwordBytes = pass.getBytes("UTF-8");
         if (passwordBytes.length != 16) {
-            throw new IllegalArgumentException("Password must be exactly 16 characters long.");
+            throw new IllegalArgumentException("Password must be exactly 16 characters.");
         }
 
-        // Prepare secret key
         SecretKeySpec secretKey = new SecretKeySpec(passwordBytes, "AES");
-
-        // Initialize AES cipher
-        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding"); // Java uses PKCS5/PKCS7 compatible
         cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 
-        // Encrypt the plaintext
         byte[] plainTextBytes = text.getBytes("UTF-8");
         byte[] encryptedBytes = cipher.doFinal(plainTextBytes);
 
-        // Encode as Base64 string
         return Base64.encodeToString(encryptedBytes, Base64.NO_WRAP);
     }
 }

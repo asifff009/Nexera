@@ -3,7 +3,7 @@ package com.asif.stepupbd;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,27 +11,28 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class Login extends AppCompatActivity {
+public class Su_three extends AppCompatActivity {
 
-    Button buttonSignup;
+    TextView buttonEmployee, buttonEmployer, buttonUddoktaCorner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_su_three);
 
-        buttonSignup = findViewById(R.id.buttonSignup);
+        buttonEmployee = findViewById(R.id.buttonEmployee);
+        buttonEmployer = findViewById(R.id.buttonEmployer);
+        buttonUddoktaCorner = findViewById(R.id.buttonUddoktaCorner);
 
-        buttonSignup.setOnClickListener(new View.OnClickListener() {
+
+        buttonEmployee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Login.this,Su_three.class));
-
+                startActivity(new Intent(Su_three.this, Signup.class));
             }
         });
 
 
     }
 
-    //===========================================
 }

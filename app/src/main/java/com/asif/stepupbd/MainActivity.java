@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        String email = sharedPreferences.getString("emial", "");
+        String email = sharedPreferences.getString("email", "");
 
         if(email.length()<=0){
             startActivity(new Intent(MainActivity.this, Login.class));
