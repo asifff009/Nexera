@@ -17,7 +17,7 @@
         android:textSize="21dp"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
-        android:fontFamily="@font/opensans_semibold"
+        android:fontFamily="@font/open_sans_bold"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
         />
@@ -38,6 +38,7 @@
         android:background="@drawable/lout_signup"
         android:layout_marginTop="20dp"
         >
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,28 +80,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Login"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:fontFamily="@font/opensans_semibold"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#FF9800"
                 />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Don't have an account? Signup"
+                android:text="Don't have an account?"
                 android:gravity="center"
+                android:layout_marginTop="10dp"
                 />
             <Button
                 android:id="@+id/buttonSignup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Signup"
-                android:backgroundTint="#BF765508"
+                android:textColor="#000000"
+                android:backgroundTint="#FF9800"
+                android:fontFamily="@font/opensans_semibold"
                 />
-
-
-
-
-
-
-
 
         </LinearLayout>
 
