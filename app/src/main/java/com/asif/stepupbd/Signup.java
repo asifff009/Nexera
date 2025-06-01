@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class Signup extends AppCompatActivity {
 
-    ImageView imageProfile;
+   // ImageView imageProfile;
     TextView tvChangePhoto;
     TextInputEditText inputEmail, inputPassword, inputName;
     Button buttonSignup, buttonLogin;
@@ -45,7 +45,7 @@ public class Signup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        imageProfile = findViewById(R.id.imageProfile);
+       // imageProfile = findViewById(R.id.imageProfile);
         tvChangePhoto = findViewById(R.id.tvChangePhoto);
         inputEmail = findViewById(R.id.inputEmail);
         inputPassword = findViewById(R.id.inputPassword);
@@ -69,15 +69,15 @@ public class Signup extends AppCompatActivity {
                 String password = inputPassword.getText().toString();
                 String name = inputName.getText().toString();
 
-                BitmapDrawable bitmapDrawable = (BitmapDrawable) imageProfile.getDrawable();
-                Bitmap bitmap = bitmapDrawable.getBitmap();
-                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
+                // BitmapDrawable bitmapDrawable = (BitmapDrawable) imageProfile.getDrawable();
+               // Bitmap bitmap = bitmapDrawable.getBitmap();
+               // ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+              //  bitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
 
-                byte[] imageBytes = outputStream.toByteArray();
-                String image = Base64.encodeToString(imageBytes, Base64.NO_WRAP);  // FIXED
+               // byte[] imageBytes = outputStream.toByteArray();
+             //   String image = Base64.encodeToString(imageBytes, Base64.NO_WRAP);  // FIXED
 
-                String url = "⁦http://192.168.120.232/apps/signup.php⁩";
+                String url = "http://192.168.120.232/apps/signup.php";
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -109,7 +109,7 @@ public class Signup extends AppCompatActivity {
                         myMap.put("email", email);
                         myMap.put("password", password);
                         myMap.put("name", name);
-                        myMap.put("image", image);
+                       // myMap.put("image", image);
 
                         return myMap;
                     }
