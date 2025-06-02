@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class Signup extends AppCompatActivity {
 
-    TextInputEditText inputName, inputEmail, inputPhoneNumber, inputPassword, inputGender;
+    TextInputEditText inputName, inputEmail, inputPhoneNumber, inputPassword, inputGender, inputDateofbirth;
     Button buttonSignup, buttonLogin;
 
     @Override
@@ -34,6 +34,8 @@ public class Signup extends AppCompatActivity {
         inputPhoneNumber = findViewById(R.id.inputPhoneNumber);
         inputPassword = findViewById(R.id.inputPassword);
         inputGender = findViewById(R.id.inputGender);
+        inputDateofbirth = findViewById(R.id.inputDateofbirth);
+
 
         buttonSignup = findViewById(R.id.buttonSignup);
         buttonLogin = findViewById(R.id.buttonLogin);
@@ -50,6 +52,9 @@ public class Signup extends AppCompatActivity {
             String phonenumber = inputPhoneNumber.getText().toString();
             String password = inputPassword.getText().toString();
             String gender = inputGender.getText().toString();
+            String dateofbirth = inputDateofbirth.getText().toString();
+
+
 
 
             try {
@@ -75,6 +80,7 @@ public class Signup extends AppCompatActivity {
                     myMap.put("phonenumber", phonenumber);
                     myMap.put("password", password);
                     myMap.put("gender", gender);
+                    myMap.put("dateofbirth", dateofbirth);
                    // myMap.put("key", MyMethods.MY_KEY);
                     return myMap;
                 }

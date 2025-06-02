@@ -74,6 +74,20 @@
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Date of Birth">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputDateofbirth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text|datetime" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
         <Button
             android:id="@+id/buttonSignup"
             android:layout_width="match_parent"
