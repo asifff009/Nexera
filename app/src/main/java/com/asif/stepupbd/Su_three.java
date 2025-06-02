@@ -32,6 +32,13 @@ public class Su_three extends AppCompatActivity {
             }
         });
 
+        buttonEmployer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Su_three.this, EmployerSignup.class));
+            }
+        });
+
 
     }
 

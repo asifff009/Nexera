@@ -18,6 +18,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".UddoktaCorner"
+            android:exported="false" />
+        <activity
+            android:name=".EmployerSignup"
+            android:exported="false" />
+        <activity
             android:name=".Su_three"
             android:exported="false" />
         <activity
