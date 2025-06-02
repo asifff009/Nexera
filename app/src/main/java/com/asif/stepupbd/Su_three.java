@@ -39,6 +39,16 @@ public class Su_three extends AppCompatActivity {
             }
         });
 
+        buttonUddoktaCorner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Su_three.this, UddoktaCorner.class));
+            }
+        });
+
+
+
+
 
     }
 
