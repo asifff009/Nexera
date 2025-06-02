@@ -65,10 +65,10 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Gender">
+            android:hint="Hobby">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputGender"
+                android:id="@+id/inputHobby"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName" />
