@@ -2,8 +2,8 @@ package com.asif.stepupbd;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
@@ -36,7 +36,6 @@ public class Signup extends AppCompatActivity {
         inputGender = findViewById(R.id.inputGender);
         inputDateofbirth = findViewById(R.id.inputDateofbirth);
 
-
         buttonSignup = findViewById(R.id.buttonSignup);
         buttonLogin = findViewById(R.id.buttonLogin);
 
@@ -46,7 +45,6 @@ public class Signup extends AppCompatActivity {
         });
 
         buttonSignup.setOnClickListener(v -> {
-
             String name = inputName.getText().toString();
             String email = inputEmail.getText().toString();
             String phonenumber = inputPhoneNumber.getText().toString();
@@ -54,22 +52,33 @@ public class Signup extends AppCompatActivity {
             String gender = inputGender.getText().toString();
             String dateofbirth = inputDateofbirth.getText().toString();
 
-
-
-
             try {
                 String encryptedKey = MyMethods.encryptData("aru112211", "aru#123456789123");
                 MyMethods.MY_KEY = encryptedKey;
             } catch (Exception e) {
-                showAlert("Encryption Error", e.getMessage());
+                showAlert("Encryption Error", e.getMessage(), false);
                 return;
             }
 
             String url = "http://192.168.120.232/apps/signup.php";
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                    response -> showAlert("Server Response", response),
-                    error -> showAlert("Server Error", error.getMessage())) {
+                    response -> {
+                        if (response.contains("Signup Success")) {
+                            SharedPreferences sharedPreferences = getSharedPreferences("myApp", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("email", email);
+                            editor.apply();
+
+                            // Redirect to EmployeePage
+                            Intent intent = new Intent(Signup.this, EmployeePage.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            showAlert("Signup Failed", response, false);
+                        }
+                    },
+                    error -> showAlert("Server Error", error.getMessage(), false)) {
 
                 @Nullable
                 @Override
@@ -81,7 +90,6 @@ public class Signup extends AppCompatActivity {
                     myMap.put("password", password);
                     myMap.put("gender", gender);
                     myMap.put("dateofbirth", dateofbirth);
-                   // myMap.put("key", MyMethods.MY_KEY);
                     return myMap;
                 }
             };
@@ -91,11 +99,13 @@ public class Signup extends AppCompatActivity {
         });
     }
 
-    private void showAlert(String title, String message) {
+    private void showAlert(String title, String message, boolean shouldFinish) {
         new AlertDialog.Builder(Signup.this)
                 .setTitle(title)
                 .setMessage(message)
-                .setPositiveButton("OK", null)
+                .setPositiveButton("OK", (dialog, which) -> {
+                    if (shouldFinish) finish();
+                })
                 .create().show();
     }
 }

@@ -19,7 +19,7 @@ import java.security.AccessController;
 
 public class MainActivity extends AppCompatActivity {
 
-   SharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences;
 
     @SuppressLint("MissingInflatedId")
     @Override
