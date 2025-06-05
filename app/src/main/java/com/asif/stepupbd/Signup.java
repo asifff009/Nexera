@@ -60,7 +60,7 @@ public class Signup extends AppCompatActivity {
                 return;
             }
 
-            String url = "http://192.168.120.232/apps/signup.php";
+            String url = "http://192.168.233.232/apps/signup.php";
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                     response -> {
