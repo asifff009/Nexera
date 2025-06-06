@@ -2,15 +2,12 @@ package com.asif.stepupbd;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -68,15 +65,30 @@ public class EmployerSignup extends AppCompatActivity {
                 String encryptedKey = MyMethods.encryptData("aru112211", "aru#123456789123");
                 MyMethods.MY_KEY = encryptedKey;
             } catch (Exception e) {
-                showAlert("Encryption Error", e.getMessage());
+                showAlert("Encryption Error", e.getMessage(), false);
                 return;
             }
 
-            String url = "http://192.168.120.232/apps/employer_signup.php";
+            String url = "http://192.168.17.232/apps/employer_signup.php";
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                    response -> showAlert("Server Response", response),
-                    error -> showAlert("Server Error", error.getMessage())) {
+                    response -> {
+                        if (response.contains("Signup Success")) {
+                            SharedPreferences sharedPreferences = getSharedPreferences("myApp", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("email", email);
+                            editor.apply();
+
+                            // Redirect to EmployeePage
+                            Intent intent = new Intent(EmployerSignup.this, EmployerrPage.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            showAlert("Signup Failed", response, false);
+                        }
+                    },
+                    error -> showAlert("Server Error", error.getMessage(), false)) {
+
 
                 @Nullable
                 @Override
@@ -92,8 +104,10 @@ public class EmployerSignup extends AppCompatActivity {
 
                     // myMap.put("key", MyMethods.MY_KEY);
                     return myMap;
+
                 }
             };
+
 
             RequestQueue requestQueue = Volley.newRequestQueue(EmployerSignup.this);
             requestQueue.add(stringRequest);
@@ -103,7 +117,7 @@ public class EmployerSignup extends AppCompatActivity {
 
     }
 
-    private void showAlert(String title, String message) {
+    private void showAlert(String title, String message, boolean b) {
         new AlertDialog.Builder(EmployerSignup.this)
                 .setTitle(title)
                 .setMessage(message)

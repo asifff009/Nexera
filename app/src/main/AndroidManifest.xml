@@ -18,6 +18,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".EmployerrPage"
+            android:exported="false" />
+        <activity
+            android:name=".UddontaCornerPage"
+            android:exported="false" />
+        <activity
+            android:name=".EmployerPage"
+            android:exported="false" />
+        <activity
             android:name=".ApplicationAdapter"
             android:exported="false" />
         <activity

@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Nexera</string>
+    <string name="app_name">StepUpBD</string>
+    <string-array name="user_types">
+        <item>Employee</item>
+        <item>Employer</item>
+        <item>Uddokta Corner</item>
+    </string-array>
 </resources>
