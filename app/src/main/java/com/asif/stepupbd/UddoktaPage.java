@@ -20,7 +20,7 @@ public class UddoktaPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employee_page);
+        setContentView(R.layout.activity_uddokta_page);
 
         // Login check
         sharedPreferences = getSharedPreferences("myApp", MODE_PRIVATE);
