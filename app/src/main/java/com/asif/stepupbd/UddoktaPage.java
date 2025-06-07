@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.GridView;
 import android.widget.HorizontalScrollView;
-import android.widget.ArrayAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,23 +12,10 @@ public class UddoktaPage extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     HorizontalScrollView horizontalScrollView;
-    GridView gridView;
     Handler handler = new Handler();
 
     int currentIndex = 0;
     int imageWidth = 290; // image width + margin (approx)
-
-    String[] services = {
-            "Pet sitting",
-            "T-shirt printing",
-            "Online teaching",
-            "Online bookkeeping",
-            "Consulting",
-            "Medical courier service",
-            "App development",
-            "Transcription service",
-            "Professional organizing"
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +32,8 @@ public class UddoktaPage extends AppCompatActivity {
             return;
         }
 
-        // Initialize scroll view and grid view
+        // Initialize scroll view
         horizontalScrollView = findViewById(R.id.horizontalScrollView);
-        gridView = findViewById(R.id.gridView);
-
-        // GridView adapter
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                services
-        );
-        gridView.setAdapter(adapter);
 
         // Start the image sequence scroll
         startImageSequence();
@@ -77,7 +53,7 @@ public class UddoktaPage extends AppCompatActivity {
 
                 handler.postDelayed(this, 4000); // 4 seconds delay
             }
-        }, 3000); // Start after 3 seconds
+        }, 3000); // Start after 1 second
     }
 
     @Override
