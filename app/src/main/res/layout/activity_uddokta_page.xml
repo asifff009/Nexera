@@ -32,7 +32,7 @@
                 android:background="@drawable/rounded_image_bg"
                 android:clipToOutline="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/uc3" />
+                android:src="@drawable/uc4" />
 
             <ImageView
                 android:id="@+id/image2"
