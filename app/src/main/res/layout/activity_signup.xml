@@ -1,123 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login"
-    android:fillViewport="true"
+    android:padding="24dp"
     android:background="@drawable/employee_design"
     >
 
     <LinearLayout
-        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="36dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_gravity="center"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Signup"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name">
+            android:layout_marginBottom="12dp"
+            app:boxStrokeColor="#4CAF50">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputName"
+                android:id="@+id/signupName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:hint="Full Name" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email">
+            android:layout_marginBottom="12dp"
+            app:boxStrokeColor="#4CAF50">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputEmail"
+                android:id="@+id/signupEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Email"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone Number">
+            android:layout_marginBottom="12dp"
+            app:boxStrokeColor="#4CAF50">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputPhoneNumber"
+                android:id="@+id/signupContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
+                android:hint="Contact"
+                android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password">
+            android:layout_marginBottom="12dp"
+            app:boxStrokeColor="#4CAF50">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputPassword"
+                android:id="@+id/signupAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Street / City" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:boxStrokeColor="#4CAF50">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signupPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
+
+        <Spinner
+            android:id="@+id/userTypeSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Gender">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputGender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Date of Birth">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputDateofbirth"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text|datetime" />
-        </com.google.android.material.textfield.TextInputLayout>
-
+            android:layout_marginBottom="24dp" />
 
         <Button
-            android:id="@+id/buttonSignup"
+            android:id="@+id/signupBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Signup"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:fontFamily="@font/opensans_semibold"
-            android:layout_marginTop="14dp"
+            android:text="Sign Up"
             android:backgroundTint="#FF9800"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Already have an account?"
-            android:gravity="center" />
-
-        <Button
-            android:id="@+id/buttonLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Login"
             android:textColor="#000000"
-            android:textStyle="bold"
-            android:fontFamily="@font/opensans_semibold"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bottom_curved"
-            />
-    </LinearLayout>
+            android:padding="12dp"
+            android:textSize="16sp" />
 
+    </LinearLayout>
 </ScrollView>

@@ -2,115 +2,123 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login"
     android:orientation="vertical"
-    android:background="#2C2C2C"
-    >
+    android:padding="24dp"
+    tools:context=".LoginActivity"
+    android:background="#2C2C2C">
 
+    <!-- Welcome Text -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to \nNexera"
-        android:textSize="21dp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:fontFamily="@font/open_sans_bold"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
-        />
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="Welcome to \nNexera"
+        android:textColor="#FFFFFF"
+        android:textSize="21dp"
+        android:textStyle="bold" />
+
+    <!-- Lottie Animation -->
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/myLottie"
         android:layout_width="wrap_content"
-        android:layout_height="130dp"
+        android:layout_height="113dp"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/yellow_login"
-        />
+        app:lottie_rawRes="@raw/yellow_login" />
 
-
+    <!-- Login Form -->
     <LinearLayout
+        android:id="@+id/loginLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/lout_signup"
-        >
-
+        android:padding="16dp"
+        android:layout_marginTop="16dp">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/myLine"
             android:layout_width="match_parent"
-            android:layout_height="107dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="104dp"
+            android:layout_marginTop="0dp"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/login_line"
 
             />
 
-        <LinearLayout
+
+        <!-- Email Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="20dp"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Email"
+            app:boxStrokeColor="#4CAF50"
+            app:boxBackgroundMode="outline">
 
-
-            >
-
-            <com.google.android.material.textfield.TextInputLayout
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Password">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:backgroundTint="#FF9800"
-                android:fontFamily="@font/opensans_semibold"
-                android:text="Login"
-                android:textColor="#000000"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Don't have an account?" />
-
-            <Button
-                android:id="@+id/buttonSignup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bottom_curved"
-                android:fontFamily="@font/opensans_semibold"
-                android:text="Signup"
-                android:layout_gravity="center"
+                android:inputType="textEmailAddress"
+                android:padding="12dp"
                 android:textColor="#000000" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
+        <!-- Password Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:hint="Password"
+            app:boxStrokeColor="#4CAF50"
+            app:boxBackgroundMode="outline">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:textColor="#000000" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Login Button -->
+        <Button
+            android:id="@+id/loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:backgroundTint="#FF9800"
+            android:textColor="#000000"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account?"
+            android:gravity="center"
+            />
+        <!-- Sign Up Button -->
+        <Button
+            android:id="@+id/signupBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Sign Up"
+            android:layout_gravity="center"
+
+            android:textColor="#000000"
+            android:background="@drawable/bottom_curved"
+            android:padding="12dp" />
     </LinearLayout>
 
 </LinearLayout>
