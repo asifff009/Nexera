@@ -14,8 +14,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="StepUp BD"
-        android:textSize="24sp"
+        android:text=" Nexera"
+        android:fontFamily="@font/open_sans_bold"
+        android:textSize="34sp"
         android:textStyle="bold"
         android:layout_marginTop="20dp"/>
 
