@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" N exera"
+        android:text=" N e xera"
         android:fontFamily="@font/open_sans_bold"
         android:textSize="34sp"
         android:textStyle="bold"
