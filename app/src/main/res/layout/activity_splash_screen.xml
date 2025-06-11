@@ -24,7 +24,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" N e x e r a"
+        android:text=" Nexera"
         android:fontFamily="@font/opensans_semibold"
         android:textSize="34sp"
         android:textStyle="bold"
