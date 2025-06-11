@@ -6,9 +6,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#FFFFFF">
+    android:background="#000000">
 
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/myLinee"
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:layout_marginTop="0dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/step_upp"
+
+        />
 
 
     <TextView
