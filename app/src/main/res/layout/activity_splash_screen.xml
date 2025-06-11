@@ -12,7 +12,7 @@
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/myLinee"
         android:layout_width="match_parent"
-        android:layout_height="104dp"
+        android:layout_height="204dp"
         android:layout_marginTop="0dp"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
@@ -28,6 +28,7 @@
         android:fontFamily="@font/regular"
         android:textSize="34sp"
         android:textStyle="bold"
+        android:textColor="#FFFFFF"
         android:layout_marginTop="20dp"/>
 
 </LinearLayout>
