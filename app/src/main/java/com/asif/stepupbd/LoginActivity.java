@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText emailInput, passwordInput;
     Button loginBtn, signupBtn;
-    String URL = "http://192.168.17.232/apps/login.php";  // Update with your local IP
+    String URL = "http://192.168.202.232/apps/login.php";  // Update with your local IP
 
     @SuppressLint("MissingInflatedId")
     @Override
