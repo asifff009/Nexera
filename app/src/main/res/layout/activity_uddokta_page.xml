@@ -16,9 +16,9 @@
         android:layout_marginBottom="32dp" />
 
     <Button
-        android:id="@+id/logoutBtn"
+        android:id="@+id/buttonNxt3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logout" />
+        android:text="Next" />
 
 </LinearLayout>
