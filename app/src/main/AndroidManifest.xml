@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.asif.stepupbd">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,6 +14,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StepUpBD"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ApplyJobHelper"
+            android:exported="false" />
+        <activity
+            android:name=".EmployerJobsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewApplicationsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewJobsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PostJobActivity"
+            android:exported="false" />
         <activity
             android:name=".Logout"
             android:exported="false" />

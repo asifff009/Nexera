@@ -22,7 +22,7 @@ public class SignupActivity extends AppCompatActivity {
     EditText signupName, signupEmail, signupContact, signupAddress, signupPassword;
     Spinner userTypeSpinner;
     Button signupBtn;
-    String URL = "http://192.168.202.232/apps/signup.php"; // Replace with your server IP
+    String URL = "http://192.168.1.102/apps/signup.php"; // Replace with your server IP
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,6 @@ public class SignupActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         userTypeSpinner.setAdapter(adapter);
 
-        // Handle signup button click
         signupBtn.setOnClickListener(v -> {
             String name = signupName.getText().toString().trim();
             String email = signupEmail.getText().toString().trim();
@@ -84,7 +83,6 @@ public class SignupActivity extends AppCompatActivity {
                                     .putString("user_type", userType)
                                     .apply();
 
-                            // Redirect to appropriate page
                             Intent intent;
                             switch (userType) {
                                 case "employee":

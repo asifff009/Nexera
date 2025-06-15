@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText emailInput, passwordInput;
     Button loginBtn, signupBtn;
-    String URL = "http://192.168.202.232/apps/login.php";  // Update with your local IP
+    String URL = "http://192.168.1.102/apps/login.php";  // Replace with your server IP
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -35,9 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.loginBtn);
         signupBtn = findViewById(R.id.signupBtn);
 
-        signupBtn.setOnClickListener(v -> {
-            startActivity(new Intent(LoginActivity.this, SignupActivity.class));
-        });
+        signupBtn.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, SignupActivity.class)));
 
         loginBtn.setOnClickListener(v -> {
             String email = emailInput.getText().toString().trim();
@@ -52,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
             StringRequest request = new StringRequest(Request.Method.POST, URL,
                     response -> {
-                        response = response.trim();  // Trim extra whitespace
+                        response = response.trim();
                         if (response.startsWith("success:")) {
                             String userType = response.split(":")[1];
 
@@ -105,11 +103,9 @@ public class LoginActivity extends AppCompatActivity {
 
             for (byte b : hash) {
                 String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1)
-                    hexString.append('0');
+                if (hex.length() == 1) hexString.append('0');
                 hexString.append(hex);
             }
-
             return hexString.toString();
 
         } catch (Exception ex) {

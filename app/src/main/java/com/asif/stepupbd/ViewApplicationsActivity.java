@@ -1,10 +1,7 @@
 package com.asif.stepupbd;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -22,78 +19,68 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeePage extends AppCompatActivity {
+public class ViewApplicationsActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ProgressBar progressBar;
-    Button logoutBtn;
-    JobAdapter adapter;
-    List<JobModel> jobList;
+    List<ApplicationModel> applicationList;
+    ApplicationAdapter adapter;
+
+    int jobId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employee_page);
+        setContentView(R.layout.activity_view_applications);
 
         recyclerView = findViewById(R.id.recyclerView);
         progressBar = findViewById(R.id.progressBar);
-        logoutBtn = findViewById(R.id.logoutBtn);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        jobList = new ArrayList<>();
-        adapter = new JobAdapter(this, jobList);
+        applicationList = new ArrayList<>();
+        adapter = new ApplicationAdapter(this, applicationList);
         recyclerView.setAdapter(adapter);
 
-        loadJobs();
-
-        logoutBtn.setOnClickListener(v -> {
-            // Clear shared preferences (login session)
-            SharedPreferences preferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.clear();
-            editor.apply();
-
-            // Redirect to LoginActivity and clear activity stack
-            Intent intent = new Intent(EmployeePage.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
-        });
+        jobId = getIntent().getIntExtra("job_id", -1);
+        if (jobId != -1) {
+            loadApplications(jobId);
+        } else {
+            Toast.makeText(this, "Invalid Job ID", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    private void loadJobs() {
+    private void loadApplications(int jobId) {
         progressBar.setVisibility(View.VISIBLE);
-        String url = "http://192.168.1.102/apps/get_jobs.php";
+
+        String url = "http://192.168.1.102/apps/get_applications.php?job_id=" + jobId;
 
         StringRequest request = new StringRequest(Request.Method.GET, url,
                 response -> {
                     progressBar.setVisibility(View.GONE);
                     try {
                         JSONArray array = new JSONArray(response);
-                        jobList.clear();
+                        applicationList.clear();
 
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject obj = array.getJSONObject(i);
-
-                            jobList.add(new JobModel(
-                                    obj.getInt("id"),
-                                    obj.getString("image"),
-                                    obj.getString("description"),
+                            applicationList.add(new ApplicationModel(
+                                    obj.getString("employee_email"),
                                     obj.getString("skill"),
                                     obj.getString("experience"),
-                                    obj.getString("duration")
+                                    obj.getString("interest")
                             ));
                         }
+
                         adapter.notifyDataSetChanged();
+
                     } catch (Exception e) {
-                        Toast.makeText(EmployeePage.this, "Failed to parse jobs", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Parsing error", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
                 },
                 error -> {
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(EmployeePage.this, "Failed to load jobs", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Failed to load applications", Toast.LENGTH_SHORT).show();
                 });
 
         Volley.newRequestQueue(this).add(request);

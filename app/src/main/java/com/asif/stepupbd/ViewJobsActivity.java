@@ -1,10 +1,7 @@
 package com.asif.stepupbd;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -22,22 +19,20 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeePage extends AppCompatActivity {
+public class ViewJobsActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ProgressBar progressBar;
-    Button logoutBtn;
     JobAdapter adapter;
     List<JobModel> jobList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employee_page);
+        setContentView(R.layout.activity_view_jobs);
 
         recyclerView = findViewById(R.id.recyclerView);
         progressBar = findViewById(R.id.progressBar);
-        logoutBtn = findViewById(R.id.logoutBtn);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -46,25 +41,12 @@ public class EmployeePage extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         loadJobs();
-
-        logoutBtn.setOnClickListener(v -> {
-            // Clear shared preferences (login session)
-            SharedPreferences preferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.clear();
-            editor.apply();
-
-            // Redirect to LoginActivity and clear activity stack
-            Intent intent = new Intent(EmployeePage.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
-        });
     }
 
     private void loadJobs() {
         progressBar.setVisibility(View.VISIBLE);
-        String url = "http://192.168.1.102/apps/get_jobs.php";
+
+        String url = "http://192.168.1.102/apps/get_jobs.php";  // Make sure this matches your backend URL
 
         StringRequest request = new StringRequest(Request.Method.GET, url,
                 response -> {
@@ -76,9 +58,15 @@ public class EmployeePage extends AppCompatActivity {
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject obj = array.getJSONObject(i);
 
+                            // Defensive check for 'image' field in JSON
+                            String imageUrl = "";
+                            if (obj.has("image") && !obj.isNull("image")) {
+                                imageUrl = obj.getString("image");
+                            }
+
                             jobList.add(new JobModel(
                                     obj.getInt("id"),
-                                    obj.getString("image"),
+                                    imageUrl,
                                     obj.getString("description"),
                                     obj.getString("skill"),
                                     obj.getString("experience"),
@@ -87,13 +75,13 @@ public class EmployeePage extends AppCompatActivity {
                         }
                         adapter.notifyDataSetChanged();
                     } catch (Exception e) {
-                        Toast.makeText(EmployeePage.this, "Failed to parse jobs", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ViewJobsActivity.this, "Failed to parse jobs", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
                 },
                 error -> {
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(EmployeePage.this, "Failed to load jobs", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewJobsActivity.this, "Failed to load jobs", Toast.LENGTH_SHORT).show();
                 });
 
         Volley.newRequestQueue(this).add(request);

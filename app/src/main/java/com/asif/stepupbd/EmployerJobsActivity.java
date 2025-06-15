@@ -1,10 +1,8 @@
 package com.asif.stepupbd;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -22,49 +20,37 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeePage extends AppCompatActivity {
+public class EmployerJobsActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ProgressBar progressBar;
-    Button logoutBtn;
-    JobAdapter adapter;
     List<JobModel> jobList;
+    EmployerJobAdapter adapter;
+    String employerEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employee_page);
+        setContentView(R.layout.activity_employer_jobs);
 
         recyclerView = findViewById(R.id.recyclerView);
         progressBar = findViewById(R.id.progressBar);
-        logoutBtn = findViewById(R.id.logoutBtn);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         jobList = new ArrayList<>();
-        adapter = new JobAdapter(this, jobList);
+
+        SharedPreferences prefs = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        employerEmail = prefs.getString("email", "");
+
+        adapter = new EmployerJobAdapter(this, jobList, employerEmail);
         recyclerView.setAdapter(adapter);
 
-        loadJobs();
-
-        logoutBtn.setOnClickListener(v -> {
-            // Clear shared preferences (login session)
-            SharedPreferences preferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.clear();
-            editor.apply();
-
-            // Redirect to LoginActivity and clear activity stack
-            Intent intent = new Intent(EmployeePage.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
-        });
+        loadEmployerJobs();
     }
 
-    private void loadJobs() {
+    private void loadEmployerJobs() {
         progressBar.setVisibility(View.VISIBLE);
-        String url = "http://192.168.1.102/apps/get_jobs.php";
+
+        String url = "http://192.168.1.102/apps/get_employer_jobs.php?email=" + employerEmail;
 
         StringRequest request = new StringRequest(Request.Method.GET, url,
                 response -> {
@@ -72,10 +58,8 @@ public class EmployeePage extends AppCompatActivity {
                     try {
                         JSONArray array = new JSONArray(response);
                         jobList.clear();
-
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject obj = array.getJSONObject(i);
-
                             jobList.add(new JobModel(
                                     obj.getInt("id"),
                                     obj.getString("image"),
@@ -87,13 +71,12 @@ public class EmployeePage extends AppCompatActivity {
                         }
                         adapter.notifyDataSetChanged();
                     } catch (Exception e) {
-                        Toast.makeText(EmployeePage.this, "Failed to parse jobs", Toast.LENGTH_SHORT).show();
-                        e.printStackTrace();
+                        Toast.makeText(this, "Error parsing jobs", Toast.LENGTH_SHORT).show();
                     }
                 },
                 error -> {
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(EmployeePage.this, "Failed to load jobs", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Error loading jobs", Toast.LENGTH_SHORT).show();
                 });
 
         Volley.newRequestQueue(this).add(request);
