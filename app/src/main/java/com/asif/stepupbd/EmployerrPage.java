@@ -9,21 +9,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class EmployerrPage extends AppCompatActivity {
 
-    Button logoutBtn;
+    Button postJobBtn, logoutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employerr_page);
 
-        TextView textView = findViewById(R.id.employerText);
+        postJobBtn = findViewById(R.id.postJobBtn);
         logoutBtn = findViewById(R.id.logoutBtn);
 
+        postJobBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(EmployerrPage.this, PostJobActivity.class);
+            startActivity(intent);
+        });
+
         logoutBtn.setOnClickListener(v -> {
-            SharedPreferences.Editor editor = getSharedPreferences("myApp", MODE_PRIVATE).edit();
-            editor.clear();
-            editor.apply();
-            startActivity(new Intent(EmployerrPage.this, LoginActivity.class));
+            getSharedPreferences("myApp", MODE_PRIVATE).edit().clear().apply();
+            Intent intent = new Intent(EmployerrPage.this, LoginActivity.class);
+            startActivity(intent);
             finish();
         });
     }

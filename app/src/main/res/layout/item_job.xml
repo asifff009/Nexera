@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F5F5F5"
+    android:layout_marginBottom="10dp">
+
+    <TextView android:id="@+id/tvDescription"
+        android:text="Job Description"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView android:id="@+id/tvSkill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Skill: "/>
+
+    <TextView android:id="@+id/tvExperience"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Experience: "/>
+
+    <TextView android:id="@+id/tvDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Duration: "/>
+
+    <TextView android:id="@+id/tvPostedBy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Posted by: "/>
+
+    <Button android:id="@+id/btnApply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apply"
+        android:layout_gravity="end"
+        android:layout_marginTop="8dp"/>
+</LinearLayout>

@@ -1,29 +1,43 @@
 package com.asif.stepupbd;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.*;
+
+import com.android.volley.*;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.*;
+
+import java.util.ArrayList;
 
 public class EmployeePage extends AppCompatActivity {
 
-    Button logoutBtn;
+    Button btnViewJobs, btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_page);
 
-        TextView textView = findViewById(R.id.employeeText);
-        logoutBtn = findViewById(R.id.logoutBtn);
+        btnViewJobs = findViewById(R.id.btnViewJobs);
+        btnLogout = findViewById(R.id.btnLogout);
 
-        logoutBtn.setOnClickListener(v -> {
-            SharedPreferences.Editor editor = getSharedPreferences("myApp", MODE_PRIVATE).edit();
-            editor.clear();
-            editor.apply();
-            startActivity(new Intent(EmployeePage.this, LoginActivity.class));
+        btnViewJobs.setOnClickListener(v -> {
+            Intent intent = new Intent(EmployeePage.this, JobListActivity.class);
+            startActivity(intent);
+        });
+
+        btnLogout.setOnClickListener(v -> {
+            SharedPreferences sp = getSharedPreferences("myApp", MODE_PRIVATE);
+            sp.edit().clear().apply();
+            Intent intent = new Intent(EmployeePage.this, LoginActivity.class);
+            startActivity(intent);
             finish();
         });
     }

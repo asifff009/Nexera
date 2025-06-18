@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,9 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StepUpBD"
         android:usesCleartextTraffic="true">
-
-      >
-
+        <activity
+            android:name=".JobAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".JobListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PostJobActivity"
+            android:exported="false" />
         <activity
             android:name=".Logout"
             android:exported="false" />
