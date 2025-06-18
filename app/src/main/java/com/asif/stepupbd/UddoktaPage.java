@@ -1,33 +1,30 @@
 package com.asif.stepupbd;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.asif.stepupbd.R;
 
 public class UddoktaPage extends AppCompatActivity {
 
-    Button buttonNxt3;
+    Button logoutBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uddokta_page);
 
-        buttonNxt3 = findViewById(R.id.buttonNxt3);
+        TextView textView = findViewById(R.id.uddoktaText);
+        logoutBtn = findViewById(R.id.logoutBtn);
 
-        buttonNxt3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intenttt = new Intent(UddoktaPage.this, Logout.class);
-                startActivity(intenttt);
-
-            }
+        logoutBtn.setOnClickListener(v -> {
+            SharedPreferences.Editor editor = getSharedPreferences("myApp", MODE_PRIVATE).edit();
+            editor.clear();
+            editor.apply();
+            startActivity(new Intent(UddoktaPage.this, LoginActivity.class));
+            finish();
         });
-
-
-
     }
 }

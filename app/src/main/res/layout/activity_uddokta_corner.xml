@@ -103,7 +103,7 @@
             android:textStyle="bold"
             android:fontFamily="@font/opensans_semibold"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bottom_curved_2"
+            android:background="@drawable/bottom_curved"
             />
     </LinearLayout>
 

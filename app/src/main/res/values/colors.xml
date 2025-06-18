@@ -1,5 +1,7 @@
 <resources>
-    <color name="primaryColor">#4A90E2</color> <!-- blue -->
-    <color name="secondaryColor">#50E3C2</color> <!-- mint green -->
-    <color name="backgroundColor">#F5F7FA</color> <!-- light gray -->
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="purple_200">#BB86FC</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray_light">#CCCCCC</color>
 </resources>
