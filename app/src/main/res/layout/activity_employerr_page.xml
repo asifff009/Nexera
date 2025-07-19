@@ -1,30 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="16dp">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hi.. Employer"
-        android:gravity="center"
-        android:textSize="24sp"
-        android:layout_marginBottom="40dp"/>
+    android:padding="20dp"
+    android:gravity="center">
 
     <Button
         android:id="@+id/postJobBtn"
-        android:text="Post Job"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Post a Job"
+        android:layout_marginBottom="20dp"/>
 
     <Button
         android:id="@+id/logoutBtn"
-        android:text="Logout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"/>
+        android:text="Logout"/>
 </LinearLayout>

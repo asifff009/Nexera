@@ -15,19 +15,16 @@
         android:theme="@style/Theme.StepUpBD"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".JobAdapter"
+            android:name=".ViewJobs"
             android:exported="false" />
         <activity
-            android:name=".JobListActivity"
+            android:name=".SeeJobListPost"
             android:exported="false" />
         <activity
-            android:name=".PostJobActivity"
+            android:name=".PostJob"
             android:exported="false" />
         <activity
             android:name=".Logout"
-            android:exported="false" />
-        <activity
-            android:name=".EmployeeDetails"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"

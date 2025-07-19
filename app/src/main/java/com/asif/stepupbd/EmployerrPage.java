@@ -3,8 +3,8 @@ package com.asif.stepupbd;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class EmployerrPage extends AppCompatActivity {
@@ -19,14 +19,22 @@ public class EmployerrPage extends AppCompatActivity {
         postJobBtn = findViewById(R.id.postJobBtn);
         logoutBtn = findViewById(R.id.logoutBtn);
 
-        postJobBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(EmployerrPage.this, PostJobActivity.class);
-            startActivity(intent);
+        postJobBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EmployerrPage.this, PostJob.class);
+                startActivity(intent);
+            }
         });
 
+
+
         logoutBtn.setOnClickListener(v -> {
-            getSharedPreferences("myApp", MODE_PRIVATE).edit().clear().apply();
+            SharedPreferences preferences = getSharedPreferences("myApp", MODE_PRIVATE);
+            preferences.edit().clear().apply();
+
             Intent intent = new Intent(EmployerrPage.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
         });

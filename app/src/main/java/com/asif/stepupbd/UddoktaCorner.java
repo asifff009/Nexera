@@ -62,7 +62,7 @@ public class UddoktaCorner extends AppCompatActivity {
                 return;
             }
 
-            String url = "http://192.168.17.232/apps/uddokta_corner.php";
+            String url = "http://192.168.1.102/apps/uddokta_corner.php";
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                     response -> {

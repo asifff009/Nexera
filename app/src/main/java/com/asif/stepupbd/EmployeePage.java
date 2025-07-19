@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.*;
@@ -28,10 +29,14 @@ public class EmployeePage extends AppCompatActivity {
         btnViewJobs = findViewById(R.id.btnViewJobs);
         btnLogout = findViewById(R.id.btnLogout);
 
-        btnViewJobs.setOnClickListener(v -> {
-            Intent intent = new Intent(EmployeePage.this, JobListActivity.class);
-            startActivity(intent);
+        btnViewJobs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EmployeePage.this, ViewJobs.class);
+                startActivity(intent);
+            }
         });
+
 
         btnLogout.setOnClickListener(v -> {
             SharedPreferences sp = getSharedPreferences("myApp", MODE_PRIVATE);

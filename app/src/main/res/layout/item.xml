@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="7dp"
+    android:background="#CEACAC"
+    android:layout_margin="20dp"
+    >
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Job Title : "
+        android:textSize="20sp"
+        />
+    <TextView
+        android:id="@+id/textDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description : "
+        android:textSize="20sp"
+        />
+    <TextView
+        android:id="@+id/textExperience"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Experience : "
+        android:textSize="20sp"
+        />
+    <TextView
+        android:id="@+id/textDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Duration : "
+        android:textSize="20sp"
+        />
+    <TextView
+        android:id="@+id/textLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Location : "
+        android:textSize="20sp"
+        />
+    <TextView
+        android:id="@+id/textContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contact : "
+        android:textSize="20sp"
+        />
+
+
+
+
+</LinearLayout>
