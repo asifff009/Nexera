@@ -1,29 +1,21 @@
 package com.asif.stepupbd;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-
+import android.view.*;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.android.volley.Request;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.android.volley.*;
+import com.android.volley.toolbox.*;
+import org.json.*;
+import java.util.*;
 
 public class ViewJobs extends AppCompatActivity {
 
     ListView listView;
-    ArrayList<HashMap<String, String>> arrayList = new ArrayList<>(); // 🔁 moved to class-level
+    ProgressBar progressBar;
+    ArrayList<HashMap<String, String>> jobList = new ArrayList<>();
+    String baseUrl = "http://192.168.1.101/apps/getData.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +23,15 @@ public class ViewJobs extends AppCompatActivity {
         setContentView(R.layout.activity_view_jobs);
 
         listView = findViewById(R.id.listView);
-        String baseUrl = "http://192.168.1.101/apps";
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
 
-        // ✅ Volley request to fetch data
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET,
-                baseUrl + "/getData.php", null,
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, baseUrl, null,
                 response -> {
-                    for (int x = 0; x < response.length(); x++) {
+                    progressBar.setVisibility(View.GONE);
+                    for (int i = 0; i < response.length(); i++) {
                         try {
-                            JSONObject obj = response.getJSONObject(x);
+                            JSONObject obj = response.getJSONObject(i);
                             HashMap<String, String> map = new HashMap<>();
                             map.put("title", obj.getString("title"));
                             map.put("description", obj.getString("description"));
@@ -47,49 +39,49 @@ public class ViewJobs extends AppCompatActivity {
                             map.put("duration", obj.getString("duration"));
                             map.put("location", obj.getString("location"));
                             map.put("contact", obj.getString("contact"));
-                            arrayList.add(map);
+                            jobList.add(map);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
-
-                    // ✅ Use correct adapter instantiation
-                    listView.setAdapter(new MyAdapter());
+                    listView.setAdapter(new JobAdapter());
                 },
-                error -> Log.e("VOLLEY", error.toString()));
+                error -> {
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(ViewJobs.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                });
 
         Volley.newRequestQueue(this).add(request);
     }
 
-    // ✅ Custom Adapter Class
-    class MyAdapter extends BaseAdapter {
-        @Override
-        public int getCount() {
-            return arrayList.size();
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return arrayList.get(i);
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return i;
-        }
+    class JobAdapter extends BaseAdapter {
+        @Override public int getCount() { return jobList.size(); }
+        @Override public Object getItem(int i) { return jobList.get(i); }
+        @Override public long getItemId(int i) { return i; }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            View view = getLayoutInflater().inflate(R.layout.item, null);
+            View view = getLayoutInflater().inflate(R.layout.item, parent, false);
+            HashMap<String, String> job = jobList.get(position);
 
-            HashMap<String, String> job = arrayList.get(position);
+            TextView textTitle = view.findViewById(R.id.textTitle);
+            TextView textDescription = view.findViewById(R.id.textDescription);
 
-            ((TextView) view.findViewById(R.id.textTitle)).setText("Title: " + job.get("title"));
-            ((TextView) view.findViewById(R.id.textDescription)).setText("Description: " + job.get("description"));
-            ((TextView) view.findViewById(R.id.textExperience)).setText("Experience: " + job.get("experience"));
-            ((TextView) view.findViewById(R.id.textDuration)).setText("Duration: " + job.get("duration"));
-            ((TextView) view.findViewById(R.id.textLocation)).setText("Location: " + job.get("location"));
-            ((TextView) view.findViewById(R.id.textContact)).setText("Contact: " + job.get("contact"));
+            textTitle.setText("Title: " + job.get("title"));
+            String desc = job.get("description");
+            if (desc.length() > 40) desc = desc.substring(0, 40) + "...";
+            textDescription.setText("Description: " + desc);
+
+            view.setOnClickListener(v -> {
+                Intent intent = new Intent(ViewJobs.this, JobDetailsActivity.class);
+                intent.putExtra("title", job.get("title"));
+                intent.putExtra("description", job.get("description"));
+                intent.putExtra("experience", job.get("experience"));
+                intent.putExtra("duration", job.get("duration"));
+                intent.putExtra("location", job.get("location"));
+                intent.putExtra("contact", job.get("contact"));
+                startActivity(intent);
+            });
 
             return view;
         }

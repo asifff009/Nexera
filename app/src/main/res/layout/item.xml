@@ -1,57 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/item_background"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="7dp"
-    android:background="#CEACAC"
-    android:layout_margin="20dp"
-    >
+    android:layout_marginBottom="12dp">
 
     <TextView
         android:id="@+id/textTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Job Title : "
+        android:text="Job Title"
         android:textSize="20sp"
-        />
+        android:textStyle="bold"
+        android:textColor="#222222"
+        android:maxLines="1"
+        android:ellipsize="end" />
+
     <TextView
         android:id="@+id/textDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Description : "
-        android:textSize="20sp"
-        />
-    <TextView
-        android:id="@+id/textExperience"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Experience : "
-        android:textSize="20sp"
-        />
-    <TextView
-        android:id="@+id/textDuration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Duration : "
-        android:textSize="20sp"
-        />
-    <TextView
-        android:id="@+id/textLocation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Location : "
-        android:textSize="20sp"
-        />
-    <TextView
-        android:id="@+id/textContact"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Contact : "
-        android:textSize="20sp"
-        />
-
-
-
+        android:text="Job description preview here..."
+        android:textSize="16sp"
+        android:textColor="#666666"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:layout_marginTop="4dp" />
 
 </LinearLayout>

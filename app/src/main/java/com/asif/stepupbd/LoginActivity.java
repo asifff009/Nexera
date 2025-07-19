@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                                     intent = new Intent(LoginActivity.this, EmployeePage.class);
                                     break;
                                 case "employer":
-                                    intent = new Intent(LoginActivity.this, EmployeePage.class);
+                                    intent = new Intent(LoginActivity.this, EmployerrPage.class);
                                     break;
                                 case "uddokta":
                                     intent = new Intent(LoginActivity.this, UddoktaPage.class);

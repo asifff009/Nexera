@@ -1,89 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PostJob"
-    android:orientation="vertical">
+    android:background="#F5F5F5"
+    android:padding="16dp">
 
-    <EditText
-        android:id="@+id/edTitle"
-        android:layout_marginTop="40dp"
+    <LinearLayout
+        android:id="@+id/main"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:hint="Job Title"
-        />
-    <EditText
-        android:id="@+id/edDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:hint="Description"
-        />
-    <EditText
-        android:id="@+id/edExperience"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:hint="Experience Required"
-        />
-    <EditText
-        android:id="@+id/edDuration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:hint="Duration"
-        />
-    <EditText
-        android:id="@+id/edLocation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:hint="Location"
-        />
-    <EditText
-        android:id="@+id/edContact"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:hint="Contact"
-        />
+        android:padding="20dp"
+        android:background="@drawable/form_background"
+        android:elevation="6dp">
 
-    <ProgressBar
-        android:visibility="gone"
-        android:id="@+id/progressBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="?android:attr/progressBarStyle"
-        android:layout_marginTop="20dp"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Post a New Job"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#333"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp" />
 
-        />
+        <EditText
+            android:id="@+id/edTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Job Title"
+            android:padding="12dp"
+            android:background="@drawable/input_background"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:layout_marginBottom="12dp" />
 
-    <Button
-        android:id="@+id/buttonPostJob"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Post Job"
-        android:textSize="24sp"
-        android:layout_marginTop="30dp"
-        />
+        <EditText
+            android:id="@+id/edDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Job Description"
+            android:padding="12dp"
+            android:background="@drawable/input_background"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:layout_marginBottom="12dp" />
 
-    <Button
-        android:id="@+id/buttonSeeJob"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="See Posting Job"
-        android:textSize="22sp"
+        <EditText
+            android:id="@+id/edExperience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Experience Required"
+            android:padding="12dp"
+            android:background="@drawable/input_background"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:layout_marginBottom="12dp" />
 
-        />
+        <EditText
+            android:id="@+id/edDuration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Duration"
+            android:padding="12dp"
+            android:background="@drawable/input_background"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:layout_marginBottom="12dp" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/edLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Location"
+            android:padding="12dp"
+            android:background="@drawable/input_background"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/edContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contact Number"
+            android:inputType="phone"
+            android:padding="12dp"
+            android:background="@drawable/input_background"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:layout_marginBottom="16dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="?android:attr/progressBarStyle"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/buttonPostJob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Post Job"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#4CAF50"
+            android:layout_marginBottom="16dp"
+            android:padding="14dp" />
+
+        <Button
+            android:id="@+id/buttonSeeJob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="See Posted Jobs"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#2196F3"
+            android:padding="14dp" />
+
+    </LinearLayout>
+</ScrollView>

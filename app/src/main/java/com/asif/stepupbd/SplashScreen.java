@@ -4,18 +4,20 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private static final int SPLASH_DELAY = 1500; // 1.5 seconds
+    private static final int SPLASH_DELAY = 2000; // 2 seconds
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
+        setContentView(R.layout.activity_splash_screen); // Make sure this file exists in res/layout
 
-        new Handler().postDelayed(() -> {
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
             SharedPreferences prefs = getSharedPreferences("myApp", MODE_PRIVATE);
             String email = prefs.getString("email", "");
             String userType = prefs.getString("user_type", "");
@@ -40,7 +42,7 @@ public class SplashScreen extends AppCompatActivity {
             }
 
             startActivity(intent);
-            finish(); // Important to close splash screen
+            finish();
         }, SPLASH_DELAY);
     }
 }

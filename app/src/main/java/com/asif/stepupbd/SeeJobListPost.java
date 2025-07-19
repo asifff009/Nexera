@@ -1,6 +1,7 @@
 package com.asif.stepupbd;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
@@ -22,7 +23,6 @@ public class SeeJobListPost extends AppCompatActivity {
     ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
     String baseUrl = "http://192.168.1.101/apps/getData.php";
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,12 +68,22 @@ public class SeeJobListPost extends AppCompatActivity {
             View view = getLayoutInflater().inflate(R.layout.item, null);
             HashMap<String, String> job = arrayList.get(position);
 
-            ((TextView) view.findViewById(R.id.textTitle)).setText("Title: " + job.get("title"));
-            ((TextView) view.findViewById(R.id.textDescription)).setText("Description: " + job.get("description"));
-            ((TextView) view.findViewById(R.id.textExperience)).setText("Experience: " + job.get("experience"));
-            ((TextView) view.findViewById(R.id.textDuration)).setText("Duration: " + job.get("duration"));
-            ((TextView) view.findViewById(R.id.textLocation)).setText("Location: " + job.get("location"));
-            ((TextView) view.findViewById(R.id.textContact)).setText("Contact: " + job.get("contact"));
+            TextView title = view.findViewById(R.id.textTitle);
+            TextView desc = view.findViewById(R.id.textDescription);
+
+            title.setText(job.get("title"));
+            desc.setText(job.get("description"));
+
+            view.setOnClickListener(v -> {
+                Intent intent = new Intent(SeeJobListPost.this, JobDetailsActivity.class);
+                intent.putExtra("title", job.get("title"));
+                intent.putExtra("description", job.get("description"));
+                intent.putExtra("experience", job.get("experience"));
+                intent.putExtra("duration", job.get("duration"));
+                intent.putExtra("location", job.get("location"));
+                intent.putExtra("contact", job.get("contact"));
+                startActivity(intent);
+            });
 
             return view;
         }

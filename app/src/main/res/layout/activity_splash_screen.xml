@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:orientation="vertical"
+    android:padding="24dp"
     android:background="#000000">
 
-
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/myLinee"
-        android:layout_width="match_parent"
-        android:layout_height="204dp"
-        android:layout_marginTop="0dp"
+        android:id="@+id/lottieView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/step_upp"
-
-        />
-
+        app:lottie_rawRes="@raw/step_upp" />
 
     <TextView
+        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Nexera"
-        android:fontFamily="@font/opensans_semibold"
+        android:text="Nexera"
         android:textSize="34sp"
+        android:textColor="@android:color/white"
         android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="20dp"/>
+        android:fontFamily="@font/opensans_semibold" />
 
 </LinearLayout>
