@@ -1,0 +1,26 @@
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#33FFFFFF">
+    <item>
+        <selector>
+            <item android:state_pressed="true">
+                <layer-list>
+                    <item>
+                        <shape>
+                            <gradient
+                                android:startColor="#FF7E5F"
+                                android:endColor="#FEB47B"
+                                android:angle="45"/>
+                            <corners android:radius="16dp" />
+                        </shape>
+                    </item>
+                </layer-list>
+            </item>
+            <item>
+                <shape>
+                    <solid android:color="#FFFFFF" />
+                    <corners android:radius="16dp" />
+                </shape>
+            </item>
+        </selector>
+    </item>
+</ripple>

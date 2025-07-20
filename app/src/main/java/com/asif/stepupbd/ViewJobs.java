@@ -73,7 +73,7 @@ public class ViewJobs extends AppCompatActivity {
             textDescription.setText("Description: " + desc);
 
             view.setOnClickListener(v -> {
-                Intent intent = new Intent(ViewJobs.this, JobDetailsActivity.class);
+                Intent intent = new Intent(ViewJobs.this, JobDetailsActivity2.class);
                 intent.putExtra("title", job.get("title"));
                 intent.putExtra("description", job.get("description"));
                 intent.putExtra("experience", job.get("experience"));
