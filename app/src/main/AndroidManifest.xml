@@ -15,6 +15,9 @@
         android:theme="@style/Theme.StepUpBD"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ApplyInfo"
+            android:exported="false" />
+        <activity
             android:name=".JobDetailsActivity2"
             android:exported="false" />
         <activity

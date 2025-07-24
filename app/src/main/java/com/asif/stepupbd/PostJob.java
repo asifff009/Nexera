@@ -68,7 +68,7 @@ public class PostJob extends AppCompatActivity {
                 String location = edLocation.getText().toString();
                 String contact = edContact.getText().toString();
 
-                String url = "http://192.168.1.101/apps/post_job.php?a=" + title
+                String url = "http://192.168.1.102/apps/post_job.php?a=" + title
                         + "&b=" + description + "&c=" + experience + "&d=" + duration + "&e=" + location + "&f=" + contact ;
 
                 progressBar.setVisibility(View.VISIBLE);

@@ -15,7 +15,7 @@ public class ViewJobs extends AppCompatActivity {
     ListView listView;
     ProgressBar progressBar;
     ArrayList<HashMap<String, String>> jobList = new ArrayList<>();
-    String baseUrl = "http://192.168.1.101/apps/getData.php";
+    String baseUrl = "http://192.168.1.102/apps/getData.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

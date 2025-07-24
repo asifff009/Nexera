@@ -22,7 +22,7 @@ public class SignupActivity extends AppCompatActivity {
     EditText signupName, signupEmail, signupContact, signupAddress, signupPassword;
     Spinner userTypeSpinner;
     Button signupBtn;
-    String URL = "http://192.168.1.101/apps/signup.php";
+    String URL = "http://192.168.1.102/apps/signup.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

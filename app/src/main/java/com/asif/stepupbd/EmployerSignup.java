@@ -69,7 +69,7 @@ public class EmployerSignup extends AppCompatActivity {
                 return;
             }
 
-            String url = "http://172.18.121.20/apps/employer_signup.php";
+            String url = "http://192.168.1.102/apps/employer_signup.php";
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                     response -> {
