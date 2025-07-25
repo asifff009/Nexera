@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class EmployerrPage extends AppCompatActivity {
 
-    Button postJobBtn, logoutBtn;
+    Button postJobBtn, logoutBtn,buttonSeeJob, buttonSeeApplicant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,16 @@ public class EmployerrPage extends AppCompatActivity {
 
         postJobBtn = findViewById(R.id.postJobBtn);
         logoutBtn = findViewById(R.id.logoutBtn);
+        buttonSeeJob = findViewById(R.id.buttonSeeJob);
+        buttonSeeApplicant = findViewById(R.id.buttonSeeApplicant);
+
+        buttonSeeJob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iintent = new Intent(EmployerrPage.this, SeeJobListPost.class);
+                startActivity(iintent);
+            }
+        });
 
         postJobBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,6 +36,17 @@ public class EmployerrPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        buttonSeeApplicant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent aintent = new Intent(EmployerrPage.this, SeeApplyList.class);
+                startActivity(aintent);
+            }
+        });
+
+
+
 
 
 

@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Post a New Job"
+            android:text="Apply for the Job"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="#333"
@@ -26,10 +26,10 @@
             android:layout_marginBottom="20dp" />
 
         <EditText
-            android:id="@+id/edTitle"
+            android:id="@+id/edName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Job Title"
+            android:hint="Your Name"
             android:padding="12dp"
             android:background="@drawable/input_background"
             android:textColor="#000000"
@@ -37,10 +37,10 @@
             android:layout_marginBottom="12dp" />
 
         <EditText
-            android:id="@+id/edDescription"
+            android:id="@+id/edInterest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Job Description"
+            android:hint="Interest"
             android:padding="12dp"
             android:background="@drawable/input_background"
             android:textColor="#000000"
@@ -51,7 +51,7 @@
             android:id="@+id/edExperience"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Experience Required"
+            android:hint="Your Experience"
             android:padding="12dp"
             android:background="@drawable/input_background"
             android:textColor="#000000"
@@ -59,10 +59,10 @@
             android:layout_marginBottom="12dp" />
 
         <EditText
-            android:id="@+id/edDuration"
+            android:id="@+id/edSkill"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Duration"
+            android:hint="Your Skill"
             android:padding="12dp"
             android:background="@drawable/input_background"
             android:textColor="#000000"
@@ -101,10 +101,10 @@
             android:visibility="gone" />
 
         <Button
-            android:id="@+id/buttonPostJob"
+            android:id="@+id/buttonApplyJob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Post Job"
+            android:text="Apply"
             android:textSize="18sp"
             android:textColor="#FFFFFF"
             android:backgroundTint="#4CAF50"
