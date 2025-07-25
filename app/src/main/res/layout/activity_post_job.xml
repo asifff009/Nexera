@@ -6,6 +6,7 @@
     android:padding="16dp"
     >
 
+
     <LinearLayout
         android:id="@+id/main"
         android:orientation="vertical"
@@ -15,10 +16,33 @@
         android:background="@drawable/form_background"
         android:elevation="6dp">
 
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@drawable/lout_signup"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Post jobs effortlessly and manage your applicants seamlessly in one place."
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"
+                android:lineSpacingExtra="2dp"
+                android:fontFamily="@font/opensans_semibold"/>
+        </LinearLayout>
+
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Post a New Job"
+            android:layout_marginTop="10dp"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="#333"
@@ -107,9 +131,10 @@
             android:text="Post Job"
             android:textSize="18sp"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#4CAF50"
+            android:backgroundTint="#D10A470C"
             android:layout_marginBottom="16dp"
-            android:padding="14dp" />
+            android:padding="14dp"
+            />
 
 
 
